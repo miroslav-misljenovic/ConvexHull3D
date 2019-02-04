@@ -1,0 +1,127 @@
+(progn
+  (merge-baseap appearance {
+    face
+    -edge
+    vect
+    -transparent
+    evert
+    shading flat
+    normscale 1
+    -normal
+    linewidth 1 
+    patchdice 10 10
+    material {
+      shininess 15.000000
+      ka 0.300000
+      kd 1.000000
+      ks 0.300000
+      alpha 1.000000
+      ambient 1.000000 1.000000 1.000000
+      diffuse 1.000000 1.000000 1.000000
+      specular 1.000000 1.000000 1.000000
+      edgecolor 0.000000 0.000000 0.000000
+      normalcolor 1.000000 1.000000 1.000000
+    }
+    lighting {
+      ambient 1 1 1
+      localviewer 1
+      attenconst 1
+      attenmult 0
+      replacelights
+      light {
+        ambient 0.000000 0.000000 0.000000
+        color 0.000000 1.000000 0.000000
+        position -9.344487 3.329350 1.263177 0.000000
+      }
+    }
+  }
+  ) # end base appearance
+  (new-geometry "[g2]"	# izlaz3.txt<2>
+    {
+      define "/home/minja/Desktop/3DConvexHullFinal/izlaz3.txt"
+NOFF
+10 16 24
+
+-5 0 0  0.843274 0.10540925 -0.52704626
+0 5 0  -0.44823292 0.76095355 0.46908095
+-5 0 -2  -0.28603879 0.095346265 -0.9534626
+5 0 -2  0.27535397 0.058408421 -0.95956689
+0 5 -2  0.095585972 0.45061958 -0.88758397
+5 0 0  0.76095355 -0.44823292 0.46908095
+0 -5 -2  0 -0.62469506 -0.78086883
+0 0 5  0.043396305 0.043396305 -0.998115
+4 4 1  -0.65814519 -0.65814519 -0.36563623
+0 -5 0  0 0.81373346 -0.58123821
+
+3	 0 1 2
+3	 3 2 4
+3	 2 1 4
+3	 3 5 6
+3	 0 2 6
+3	 2 3 6
+3	 1 0 7
+3	 5 3 8
+3	 3 4 8
+3	 4 1 8
+3	 1 7 8
+3	 7 5 8
+3	 0 6 9
+3	 7 0 9
+3	 6 5 9
+3	 5 7 9
+    }
+  ) # end geometry "[g2]" izlaz3.txt<2>
+  (merge-ap "[g2]" appearance {
+    *edge
+    *-texturing
+    *-shadelines
+    *-concave
+    *shading flat
+    *-mipmap
+    *-mipinterp
+    *-linear
+    *normal
+    material {
+      ambient 1.000000 1.000000 0.000000
+      *diffuse 1.000000 1.000000 0.000000
+    }
+  }
+  ) # end appearance "[g2]" izlaz3.txt<2>
+(xform-set "[g2]" transform {
+   -0.93833643   0.012169677   -0.34512642             0
+   -0.34442994   0.039362546    0.93785924             0
+   0.025026908     1.0000961  -0.032782678             0
+  0.0047585368    0.18993533   -0.19634929             1
+
+  }
+)
+  (bbox-draw "[g2]" on)
+  (bbox-color "[g2]" 0.000000 0.000000 0.000000)
+  (normalization "[g2]" each)
+  (name-object "[g2]" "izlaz3.txt<2>")
+
+  (window default { position 999 1448 384 833 })
+  (camera "Camera" camera {
+    camtoworld transform {
+             1             0             0             0
+             0             1             0             0
+             0             0             1             0
+             0             0             3             1
+
+    }
+    perspective 0  stereo 0
+    fov 2.2
+    frameaspect 1
+    focus 3
+    near 0.07
+    far 100
+    bgcolor 1 1 0.494118 0
+  }
+  ) # camera "Camera" ...
+  (backcolor "Camera" 1.000000 1.000000 0.494118)
+  (window "Camera" window { size 450 450 position 999 1448 384 833 resize curpos 999 1448 384 833 viewport 0 449 0 449 }
+  )
+  # end camera Camera
+
+  (ui-target "izlaz3.txt<2>")
+)
