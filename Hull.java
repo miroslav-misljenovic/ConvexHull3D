@@ -21,7 +21,7 @@ public class Hull {
 	    System.out.println("usage: Hull <infile> <outfile>");
 	  }
 	else
-	  {
+	  {	  	
 	    BufferedReader r = new BufferedReader(new FileReader(args[0]));
 	    StreamTokenizer st = new StreamTokenizer(r);
 	    Vector vertices = new Vector();
@@ -58,9 +58,17 @@ public class Hull {
 	      }
 		  
 	    r.close();
+	    
+	    
+	    long timerBegin, timerEnd;
+	    
+	    timerBegin = System.currentTimeMillis();
+	    //System.out.println(timerBegin + "\n");
 
 	    ConvexHull hull = new ConvexHull(vertices);
-
+	    
+	    timerEnd = System.currentTimeMillis();
+	    System.out.println(timerEnd - timerBegin + "\n");
 	    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(args[1])));
 	    
 		hull.writeOFF(pw);
